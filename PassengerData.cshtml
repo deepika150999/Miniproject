@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AirTicketMiniProject.Models.Passenger>
+
+@{
+    ViewData["Title"] = "PassengerData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>PassengerData</h1>
+
+<hr />
+<div class="row">
+    
+        <form asp-action="Passenger"> 
+           
+               @foreach(var item in Model)
+               {
+               <div class="col-md-4">
+                   <h4>Passenger Details</h4>
+                <input type="hidden" asp-for="@item.BookingId" />
+                <div class="form-group">
+                    <label asp-for="@item.PassangerName" class="control-label"></label>
+                    <input asp-for="@item.PassangerName" class="form-control" />
+                    <span asp-validation-for="@item.PassangerName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.DateOfBirth" class="control-label"></label>
+                    <input asp-for="@item.DateOfBirth" class="form-control" />
+                    <span asp-validation-for="@item.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.Age" class="control-label"></label>
+                    <input asp-for="@item.Age" class="form-control" />
+                    <span asp-validation-for="@item.Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.Address" class="control-label"></label>
+                    <input asp-for="@item.Address" class="form-control" />
+                    <span asp-validation-for="@item.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.City" class="control-label"></label>
+                    <input asp-for="@item.City" class="form-control" />
+                    <span asp-validation-for="@item.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.State" class="control-label"></label>
+                    <input asp-for="@item.State" class="form-control" />
+                    <span asp-validation-for="@item.State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.Pincode" class="control-label"></label>
+                    <input asp-for="@item.Pincode" class="form-control" />
+                    <span asp-validation-for="@item.Pincode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@item.ContactNumber" class="control-label"></label>
+                    <input asp-for="@item.ContactNumber" class="form-control" />
+                    <span asp-validation-for="@item.ContactNumber" class="text-danger"></span>
+
+                </div>
+               </div>
+               }
+            
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                     
+            
+                       <div class="form-group">
+                <input type="submit" value="Book" class="btn btn-primary" />
+            </div>
+        </form>    
+</div>
+
+<div>
+    <a asp-action="Book">Back to List</a>
+</div>
+   
+<script>
+    function  fnSavePassengers(){
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/User/Passenger",
+            data: JSON.stringify(@Model),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            traditional: true
+
+        });
+    }
+        
+</script>

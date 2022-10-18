@@ -1,0 +1,48 @@
+﻿@model AirTicketMiniProject.Models.Payment
+
+@{
+    ViewData["Title"] = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>create</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="create">
+            <div><h3>Choose Your PaymentMode</h3>
+                <input type="radio" asp-for="PaymentMode" value="Credit"> Credit Card </input>
+                <input type="radio" asp-for="PaymentMode" value="Debit"> Debit Card </input>
+                <input type="radio" asp-for="PaymentMode" value="NetBanking"> Net Banking </input>
+                <input type="radio" asp-for="PaymentMode" value="UPI"> UPI Payment </input>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Paymentid" class="control-label"></label>
+                <input asp-for="Paymentid" class="form-control" />
+                <span asp-validation-for="Paymentid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentDate" class="control-label"></label>
+                <input asp-for="PaymentDate" class="form-control" />
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

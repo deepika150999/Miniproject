@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AirTicketMiniProject.Models.Flight>
+
+@{
+    ViewData["Title"] = "Flight";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table{
+        background-image: url('flight.jpg');
+        background-size: cover;
+    }</style>
+
+
+
+<table class="table">
+    <h1>Flight</h1>
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArravingPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfArrving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeparturePoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfDeparture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketCost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightNumber)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArravingPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfArrving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeparturePoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfDeparture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timing)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketCost)
+                </td>
+            <td>
+                    <a asp-action="Book" asp-route-FlightNumber="@item.FlightNumber">Book</a> |
+                <a asp-action="Details" asp-route-id="@item.FlightNumber">Details</a> |
+@*                <a asp-action="Delete" asp-route-id="@item.FlightNumber">Cancel</a>
+*@            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Payment">Continue To Payment</a>
+</div>
