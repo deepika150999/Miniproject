@@ -109,7 +109,7 @@ namespace AirTicketMiniProject.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Create","Payment");
+            return RedirectToAction("Edit","Payment");
         }
         public IActionResult Logout()
         {
